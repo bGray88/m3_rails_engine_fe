@@ -1,6 +1,12 @@
 class ItemFacade
-  def self.all(merchant_id)
-    ItemService.items(merchant_id)[:data].map do |item|
+  def self.all_merchant(merchant_id)
+    ItemService.items_merchant(merchant_id)[:data].map do |item|
+      Item.new(item)
+    end
+  end
+
+  def self.all
+    ItemService.items[:data].map do |item|
       Item.new(item)
     end
   end

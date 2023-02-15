@@ -4,10 +4,14 @@ class ItemService
   end
 
   def self.item(id)
-    JSON.parse(ItemService.conn.get("/api/v1/items#{id}}").body, symbolize_names: true)
+    JSON.parse(ItemService.conn.get("/api/v1/items/#{id}").body, symbolize_names: true)
   end
 
-  def self.items(id)
+  def self.items_merchant(id)
     JSON.parse(ItemService.conn.get("/api/v1/merchants/#{id}/items").body, symbolize_names: true)
+  end
+
+  def self.items
+    JSON.parse(ItemService.conn.get("/api/v1/items").body, symbolize_names: true)
   end
 end

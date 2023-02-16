@@ -14,4 +14,8 @@ class ItemService
   def self.items
     JSON.parse(ItemService.conn.get("/api/v1/items").body, symbolize_names: true)
   end
+
+  def self.items_search(partial)
+    JSON.parse(ItemService.conn.get("/api/v1/items/find?name=#{partial}").body, symbolize_names: true)
+  end
 end

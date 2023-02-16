@@ -4,14 +4,17 @@ RSpec.describe 'Show' do
   before(:each) do
     @item1 = ItemFacade.one(10)
 
-    visit item_path(@item1.id)
+    visit items_path
   end
 
-  it 'has the object title' do
-    expect(page).to have_content(@item1.name)
+  it 'has the search button' do
+    expect(page).to have_button("Search")
   end
 
   it 'has the object attributes' do
+    fill_in("Search", with: @item1.name)
+    click_button("Search")
+
     expect(page).to have_content("Description: #{@item1.description}")
     expect(page).to have_content("Unit Price: #{@item1.unit_price}")
   end

@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
-  def index
+  def show
     @item = ItemFacade.search(params[:search])
   end
 end

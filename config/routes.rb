@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   resources :merchants, only: [:index, :show]
   resources :items, only: [:index, :show]
-  resources :search, only: [:index]
+  get :search, to: 'search#show', as: 'search'
 end
